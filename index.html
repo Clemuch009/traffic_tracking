@@ -1,10 +1,20 @@
-CTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orchestrator Lite</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXCV3E1Y51"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RXCV3E1Y51');
+    </script>
 </head>
 <body>
     <header>
@@ -31,7 +41,26 @@ CTYPE html>
         <p>&copy; 2026 Orchestrator Lite</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Track visits per device (optional console log)
+        function trackVisit() {
+            let visits = localStorage.getItem('visits');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visits', visits);
+            console.log(`This device has visited ${visits} times`);
+        }
+
+        trackVisit();
+
+        // Signup button with GA event
+        function signup() {
+            alert("Thanks for signing up! We'll contact you soon.");
+            gtag('event', 'signup_click', {
+                'event_category': 'engagement',
+                'event_label': 'Sign Up Button'
+            });
+        }
+    </script>
 </body>
 </html>
 
